@@ -183,7 +183,7 @@ SAENET.predict <- function(h, new.data, layers=c(1), all.layers=FALSE){
     if (layer == 1) {
       results.out[[layer]] <- autoencoder::predict.autoencoder(h[[layer]]$ae.out,new.data,hidden.output=TRUE)
     } else if (layer > 1) {
-      results.out[[layer]] <- autoencoder::predict.autoencoder(h[[layer]]$ae.out,h[[layer-1]]$X.output,hidden.output=TRUE)
+      results.out[[layer]] <- autoencoder::predict.autoencoder(h[[layer]]$ae.out,results.out[[layer - 1]]$X.output,hidden.output=TRUE)
     }
   }
   results.out <- results.out[layers]
